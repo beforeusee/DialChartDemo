@@ -97,24 +97,24 @@ public class DialChartSLoadView extends GraphicalView {
         //设置直线坐标轴的颜色和宽度
         //设置TOP轴
         if (mChart.getPlotAxis().size()>=2){
-            mChart.getPlotAxis().get(2).getAxisPaint().setColor(Color.BLUE);
+            mChart.getPlotAxis().get(2).getAxisPaint().setColor(Color.rgb(255,215,0));
             mChart.getPlotAxis().get(2).getAxisPaint().setStrokeWidth(5);
         }
 
         //设置LEFT轴
         if (mChart.getPlotAxis().size()>=3){
-            mChart.getPlotAxis().get(3).getAxisPaint().setColor(Color.GREEN);
+            mChart.getPlotAxis().get(3).getAxisPaint().setColor(Color.rgb(50,205,50));
             mChart.getPlotAxis().get(3).getAxisPaint().setStrokeWidth(5);
         }
 
         //设置RIGHT轴
         if (mChart.getPlotAxis().size()>=4){
-            mChart.getPlotAxis().get(4).getAxisPaint().setColor(Color.RED);
+            mChart.getPlotAxis().get(4).getAxisPaint().setColor(Color.rgb(255,69,0));
             mChart.getPlotAxis().get(4).getAxisPaint().setStrokeWidth(5);
         }
 
         //设置最外圈的环形轴的颜色和宽度
-        mChart.getPlotAxis().get(0).getAxisPaint().setColor(Color.RED);
+        mChart.getPlotAxis().get(0).getAxisPaint().setColor(Color.DKGRAY);
         mChart.getPlotAxis().get(0).getAxisPaint().setStrokeWidth(2);
 
         //设置环形轴内圈到圆心之间的填充色,为浅灰色LightGrey
@@ -122,8 +122,6 @@ public class DialChartSLoadView extends GraphicalView {
 
         //Pink--粉红色
         mChart.addCircleAxis(0.2f,Color.rgb(255,192,203));
-//        mChart.addCircleAxis(0.15f,Color.rgb(28,111,84));
-
     }
 
     private void setStrokeRingAxisByPercentage(float percentage){
@@ -137,6 +135,12 @@ public class DialChartSLoadView extends GraphicalView {
         float yellowEndPos=0.82143f;
         float redEndPos=1.0f;
 
+        //定义酸橙绿色，金色，橙红色，背景白灰色
+        int green=Color.rgb(50,205,50);
+        int yellow=Color.rgb(255,215,0);
+        int red=Color.rgb(255,69,0);
+        int background=Color.rgb(245,245,245);
+
         //只显示绿色部分
         if (percentage>=0&&percentage<=greenEndPos){
 
@@ -144,8 +148,8 @@ public class DialChartSLoadView extends GraphicalView {
             ringPercentage.add(redEndPos-percentage);
 
             //添加绿色和背景色(白烟)
-            rColor.add(Color.rgb(50,205,50));
-            rColor.add(Color.rgb(245,245,245));
+            rColor.add(green);
+            rColor.add(background);
         }
         //显示绿色和黄色
         if (percentage>greenEndPos&&percentage<=yellowEndPos){
@@ -155,9 +159,9 @@ public class DialChartSLoadView extends GraphicalView {
             ringPercentage.add(redEndPos-percentage);
 
             //添加绿色，黄色和背景色(白烟)
-            rColor.add(Color.rgb(50,205,50));
-            rColor.add(Color.YELLOW);
-            rColor.add(Color.rgb(245,245,245));
+            rColor.add(green);
+            rColor.add(yellow);
+            rColor.add(background);
         }
 
         //显示绿色，黄色与红色
@@ -169,10 +173,10 @@ public class DialChartSLoadView extends GraphicalView {
             ringPercentage.add(redEndPos-percentage);
 
             //添加绿色,黄色,红色和背景色(白烟)
-            rColor.add(Color.rgb(50,205,50));
-            rColor.add(Color.YELLOW);
-            rColor.add(Color.RED);
-            rColor.add(Color.rgb(245,245,245));
+            rColor.add(green);
+            rColor.add(yellow);
+            rColor.add(red);
+            rColor.add(background);
         }
 
         mChart.setStartAngle(130);
